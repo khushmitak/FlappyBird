@@ -7,7 +7,7 @@ class mainScene {
 
     create() {
         this.player = this.physics.add.sprite(100, 100, 'player')
-        this.player = this.physics.add.sprite(300, 300, 'coin')
+        this.coin = this.physics.add.sprite(300, 300, 'coin')
 
         // adding score
         this.score = 0;
@@ -15,7 +15,7 @@ class mainScene {
         this.scoreText = this.add.text(20,20, 'Score: ' + this.score, style);
 
         // taking arrows as inputs
-        this.arrow = this.iput.keyboard.createCursorKeys();
+        this.arrow = this.input.keyboard.createCursorKeys();
     }
 
     update()  {
@@ -33,10 +33,10 @@ class mainScene {
         }
 
         //move player up or down
-        if(this.player.up.isDown) {
+        if(this.arrow.up.isDown) {
             this.player.y -=3;
         }
-        else if(this.player.down.isDown) {
+        else if(this.arrow.down.isDown) {
             this.player.y +=3;
         }
 
@@ -47,8 +47,8 @@ class mainScene {
         this.coin.x = Phaser.Math.Between(100, 600);
         this.coin.y = Phaser.Math.Between(100, 300);
 
-        this.score +=10;
-        this.scoreText.settext('Score: ' + this.score);
+        this.score += 10;
+        this.scoreText.setText('Score: ' + this.score);
     }
 
 }
